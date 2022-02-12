@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+</head>
+
+<body>
+    <div class="table-container">
+        <table>
+            <caption>
+                <h2>Hotel List</h2>
+            </caption>
+            <tbody>
+                <tr>
+                    <th>Hotel Name</th>
+                    <th>City</th>
+                    <th>District</th>
+                    <th>Date</th>
+                    <th>Earliest check-in time</th>
+                    <th>Price</th>
+                    <th>Room Type</th>
+                    <th>Operation</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="button-container"><button id="add-show">Add Hotel</button></div>
+    <div class="form-container">
+        <form name="form1" class="form">
+            <div class="content">
+                <div>
+                    <span>Hotel Name:</span>
+                    <label><input type="text" name="hotel-name" class="in"></label>
+                </div>
+                <div>
+                    <span>City:</span>
+                    <label><input type="radio" name="city" value="gz" id="gz" />GUANG ZHOU</label>
+                    <label><input type="radio" name="city" value="sz" id="sz" />SHEN ZHEN</label>
+                </div>
+                <div>
+                    <span>District:</span>
+                    <label>
+                        <select id="district" class="in">
+                            <option value="0" disabled selected style='display:none;'></option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <span>Date:</span>
+                    <label><input type="date" name="date" class="in" /></label>
+                </div>
+                <div>
+                    <span>Earliest check-in time:</span>
+                    <label><input type="time" name="time" step="1" class="in" /></label>
+                </div>
+                <div>
+                    <span>Price:</span>
+                    <label><input type="text" name="price" class="in"></label>
+                </div>
+                <div>
+                    <span>Room Type:</span>
+                    <label>
+                        <select id="type" class="in">
+                            <option value="0" disabled selected style='display:none;'></option>
+                            <option>Standard Room</option>
+                            <option>King Bed Room</option>
+                            <option>Family Room</option>
+                            <option>Presidential Suite</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <button type="button" id="add">Add Hotel</button>
+            <div class="icon-container"><i class="iconfont icon-guanbi" id="close"></i></div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

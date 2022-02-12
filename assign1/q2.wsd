@@ -1,0 +1,75 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+class Department{
+    -departmentID: int
+    -departmentName: String
+}
+
+class BasicInformation{
+    -name: String
+    -age: int
+    -cellphoneNumber: String
+    -department: Department
+    -ID: String
+}
+
+class DeclarationForm{
+    -question: List<String>
+    -answer: List<String>
+}
+
+class HealthDeclarationInformation{
+    -form: DeclarationForm
+    -isDone: Bollean
+    -date: Date
+}
+
+class SUSTechMember{
+    -information: BasicInformation
+    -declarationRecord: List<HealthDeclarationInformation>
+}
+
+class Student{
+
+}
+
+class Faculty{
+
+}
+
+class AdministrativeStaff{
+
+}
+
+class Administrator{
+    -healthDeclarationSystem: HealthDeclarationSystem
+}
+
+class HealthDeclarationSystem{
+    -currentTime: DateTime
+    -currentForm: DeclarationForm
+    -members: List<SUSTechMember>
+    -staffs: List<List<AdministrativeStaff>>
+}
+
+note right of HealthDeclarationSystem::staffs
+    The index of List 
+    is departmentID.
+end note
+
+DeclarationForm <-- HealthDeclarationInformation
+BasicInformation <-- SUSTechMember
+HealthDeclarationInformation <-- SUSTechMember
+Department <-- BasicInformation
+SUSTechMember <|-- Student
+SUSTechMember <|-- Faculty
+SUSTechMember <|-- AdministrativeStaff
+SUSTechMember <|-- Administrator
+HealthDeclarationSystem -- Administrator
+HealthDeclarationSystem --> SUSTechMember
+HealthDeclarationSystem -->AdministrativeStaff
+HealthDeclarationSystem -> DeclarationForm
+
+@enduml

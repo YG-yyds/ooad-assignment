@@ -1,0 +1,44 @@
+@startuml
+
+actor user as user
+participant "font-end page" as client
+database "system's database" as db
+
+user -> client : healthyDeclaration()
+activate client
+
+client -->> user: some questions
+
+opt user has been to medium/high-risk areas
+    client -->> user : input area to write down the specific areas
+    client -->> user : notify a message that user should proactively \ncontact the school for quarantine for 14 days
+end
+
+client -> db : upload(user)
+activate db
+deactivate db
+
+user -> client: submit()
+
+loop some questions unfilled
+    client -->> user : remind the unfilled question
+    user -> client : submit()
+end
+
+client -->> user : Submitted successfully
+client -> db: upload(user)
+activate db
+deactivate db
+deactivate client
+
+
+' alt all questions already answered
+'     client -->> user : Submitted successfully
+'     client -> db: upload(user)
+'     activate db
+'     deactivate db
+' else else
+'     client -->> user : remind the unfilled question
+' end
+
+@enduml

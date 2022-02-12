@@ -1,0 +1,39 @@
+@startuml
+
+left to right direction
+
+:SUSTech member: as mem
+:student: as stu
+:faculty: as fac
+:administrative staff: as staff
+:administrator: as admin
+:time:
+
+rectangle Health_Declaration_System{
+    (register account) as (uc_reg)
+    (enter basic information) as (uc_enter_info)
+    (modify basic information) as (uc_mod_info)
+    (do health declaration) as (uc_declar)
+    (check previous declaration) as (uc_check)
+    (modify health declaration form) as (uc_mod_form)
+    (view health declaration information) as (uc_view)
+    (remind to do health declaration) as (uc_remind)
+    (sent information to administrative staff) as (uc_send_info)
+}
+
+mem <|-- stu
+mem <|-- fac
+mem <|-- staff
+mem <|-- admin
+admin -- uc_reg
+uc_reg <.. uc_enter_info :<<include>>
+mem -- uc_declar
+mem -- uc_check
+admin -- uc_view
+staff -- uc_view
+admin -- uc_mod_form
+admin -- uc_mod_info
+time -- uc_remind
+time -- uc_send_info
+
+@enduml
